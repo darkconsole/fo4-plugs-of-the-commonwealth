@@ -76,6 +76,18 @@ Begin
 	SetElementEditValues(Form,'Female 1st Person\MOD5',ModelName);
 End;
 
+Procedure DccSetArmoArma(Form: IInterface; Arma: IInterface);
+Var
+	Field: IInterface;
+	Iter: Integer;
+Begin
+	For Iter := 0 To 1
+	Do Begin
+		Field := ElementByIndex(ElementByPath(Form,'Armatures'),Iter);
+		SetNativeValue(ElementByPath(Field,'MODL - Armature'),FormID(Arma));
+	End;
+End;
+
 Procedure DccSetArmoModels(Form: IInterface; ModelName: String);
 Begin
 	SetElementEditValues(Form,'Male world model\MOD2',ModelName);
@@ -184,6 +196,7 @@ Begin
 	DccSetDescription(FormNewArmo,PlugFlavour);
 	DccSetValue(FormNewArmo,PlugValue);
 	DccSetWeight(FormNewArmo,PlugWeight);
+	DccSetArmoArma(FormNewArmo,FormNewArma);
 	DccSetArmoModels(FormNewArmo,PlugArmoModel);
 	AddMessage('Created ' + Name(FormNewArmo));
 
