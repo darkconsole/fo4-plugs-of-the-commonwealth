@@ -1,0 +1,1 @@
+zip dcc-potc-v%~1-slot%~2.zip -r Plugs*.txt dcc-bp-lol.esp interface meshes scripts
